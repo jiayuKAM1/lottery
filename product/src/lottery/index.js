@@ -827,11 +827,6 @@ let onload = window.onload;
 window.onload = function () {
   onload && onload();
 
-  let music = document.querySelector("#music");
-
-  let rotated = 0,
-    stopAnimate = false,
-    musicBox = document.querySelector("#musicBox");
 
   function animate() {
     requestAnimationFrame(function () {
@@ -845,28 +840,4 @@ window.onload = function () {
     });
   }
 
-  musicBox.addEventListener(
-    "click",
-    function (e) {
-      if (music.paused) {
-        music.play().then(
-          () => {
-            stopAnimate = false;
-            animate();
-          },
-          () => {
-            addQipao("背景音乐自动播放失败，请手动播放！");
-          }
-        );
-      } else {
-        music.pause();
-        stopAnimate = true;
-      }
-    },
-    false
-  );
-
-  setTimeout(function () {
-    musicBox.click();
-  }, 1000);
 };
